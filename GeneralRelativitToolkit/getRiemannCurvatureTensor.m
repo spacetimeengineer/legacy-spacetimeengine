@@ -7,10 +7,10 @@ riemannCurvatureTensor = sym(zeros(4,4,4,4));
 for a=1:length(coordinateSet)
     for b=1:length(coordinateSet)
         for g=1:length(coordinateSet)
-            for d=1:length(coordinateSet)
-                riemannCurvatureTensorComponent = 0;
+            for d=1:length(coordinateSet) 
+                riemannCurvatureTensorComponent = diff(christoffelSymbolsOfTheSecondKind(d,b,a),coordinateSet(g)) - diff(christoffelSymbolsOfTheSecondKind(g,b,a),coordinateSet(d));
                 for u=1:length(coordinateSet)
-                    riemannCurvatureTensorComponent = riemannCurvatureTensorComponent + diff(christoffelSymbolsOfTheSecondKind(d,b,a),coordinateSet(g)) - diff(christoffelSymbolsOfTheSecondKind(g,b,a),coordinateSet(d)) + christoffelSymbolsOfTheSecondKind(d,b,u)*christoffelSymbolsOfTheSecondKind(g,u,a) - christoffelSymbolsOfTheSecondKind(g,b,u)*christoffelSymbolsOfTheSecondKind(d,u,a);
+                    riemannCurvatureTensorComponent = riemannCurvatureTensorComponent + christoffelSymbolsOfTheSecondKind(d,b,u)*christoffelSymbolsOfTheSecondKind(g,u,a) - christoffelSymbolsOfTheSecondKind(g,b,u)*christoffelSymbolsOfTheSecondKind(d,u,a);
                 end
                 riemannCurvatureTensor(d,g,b,a) = riemannCurvatureTensorComponent;
             end
