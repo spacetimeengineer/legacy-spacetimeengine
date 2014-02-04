@@ -7,7 +7,7 @@ ricciCurvatureScalar = getRicciCurvatureScalar(metricTensor);
 ricciCurvatureTensor = getRicciCurvatureTensor(metricTensor);
 for m=1:length(coordinateSet)
     for n=1:length(coordinateSet)
-        stressEnergyComponent = ricciCurvatureTensor(m,n)*(8*PI*G)^(-1)*c^4-(ricciCurvatureScalar/2)*metricTensor(m,n)*(8*PI*G)^(-1)*c^4;  
+        stressEnergyComponent = ricciCurvatureTensor(m,n)*(8*PI)^(-1)-(ricciCurvatureScalar/2)*metricTensor(m,n)*(8*PI)^(-1);  
         stressEnergyTensor(m,n) = stressEnergyComponent;
     end
 end
